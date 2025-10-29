@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useFetch } from '../utils/fetch'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
+
+const username = import.meta.env.VITE_USERNAME
+const apiUrl = import.meta.env.VITE_API_URL
+const { data, error } = useFetch(apiUrl)
 </script>
 
 <template>
 	<h2>{{ msg }}</h2>
-
+	<div v-if="error">Oops! Error encountered: {{ error }}</div>
+	<div v-else-if="data">
+		<p>Welcome, {{ username }}, with IP: {{ data.ip }}</p>
+	</div>
 	<div class="card">
 		<button type="button" @click="count++">count is {{ count }}</button>
 		<p>
