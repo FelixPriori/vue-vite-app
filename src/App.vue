@@ -2,6 +2,7 @@
 import { defineAsyncComponent } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import VueIcon from './assets/vue.svg'
 const HelloWorld = defineAsyncComponent(
 	() => import('./components/HelloWorld.vue'),
 )
@@ -13,7 +14,7 @@ const HelloWorld = defineAsyncComponent(
 			<img src="/vite.svg" class="logo" alt="Vite logo" />
 		</a>
 		<a href="https://vuejs.org/" target="_blank">
-			<img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+			<VueIcon class="logo vue" />
 		</a>
 		<a href="https://www.typescriptlang.org/" target="_blank">
 			<img
@@ -34,6 +35,9 @@ const HelloWorld = defineAsyncComponent(
 	padding: 1.5em;
 	will-change: filter;
 	transition: filter 300ms;
+}
+.logo.vue {
+	width: 6em;
 }
 .logo:hover {
 	filter: drop-shadow(0 0 2em #646cffaa);
